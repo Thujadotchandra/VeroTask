@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Music List";
+}
+
+
+@model IEnumerable<SongModel>
+
+@if (Model?.Count() > 0 && Model?.Any(a => a.IsPurchased == true) == true)
+{
+
+    <table class="table table-bordered table-condensed table-striped">
+
+        <tr>
+            <th>Purchased Song:</th>
+        </tr>
+        @foreach (var item in Model.Where(a=>a.IsPurchased==true))
+        {
+            <tr>
+
+                <td>@item.SongName</td>
+
+            </tr>
+        }
+    </table>
+}
+
+else if (Model?.Count() > 0 && Model?.Any(a => a.IsViewed == true) == true)
+{
+
+    <table class="table table-bordered table-condensed table-striped">
+
+        <tr>
+            <th>Viewed Songs:</th>
+        </tr>
+        @foreach (var item in Model.Where(a=>a.IsViewed==true))
+        {
+            <tr>
+
+                <td>@item.SongName</td>
+
+            </tr>
+        }
+    </table>
+}
+
+else
+{
+    <p>Welcome Music store</p>
+}

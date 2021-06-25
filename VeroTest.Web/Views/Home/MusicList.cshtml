@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Music List";
+}
+
+
+@model IEnumerable<SongModel>
+
+<table class="table table-bordered table-condensed table-striped">
+
+    <tr>
+        <th>Song Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (item.LastViewed == true)
+            {
+                <td style="border: 2px solid red;">@item.SongName</td>
+
+            }
+            else
+            {
+                <td>@item.SongName</td>
+            }
+
+            <td style="width: 150px;"><a class="btn btn-info" asp-area="" asp-controller="Home" asp-action="ViewDetails" asp-route-id=@item.Id>View Details</a> </td>
+
+        </tr>
+    }
+</table>
